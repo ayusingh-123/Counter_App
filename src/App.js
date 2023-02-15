@@ -11,6 +11,15 @@ import { useState } from 'react';
 
 function App() {
   const[count,setCount] = useState(0);
+  
+  let countercolor = "green";
+  if(count >= 5 && count <=9){
+    countercolor = "blue";
+  }
+  else if (count == 10){
+    countercolor = "red";
+  }
+  
   return (
     <>
     <Segment style={{ padding: '15em 8em' }} vertical>
@@ -27,8 +36,8 @@ function App() {
         
         <Container className="my-5">
           
-            <div className='main'><Container textAlign='center'>{count}</Container></div>
-            <Button className="mx-2" color='green' onClick={()=>setCount(count+1)} >Increment </Button> &emsp; &ensp; &emsp;&emsp;
+            <div className='main'><Container textAlign='center' style={{color : countercolor}}>{count}</Container></div>
+            <Button className="mx-2" color='green' onClick={()=>setCount(count+1)} disabled={count >= 10}>Increment </Button> &emsp; &ensp; &emsp;&emsp;
             <Button className="mx-3" color='red' onClick={()=>setCount(count-1)} disabled={count===0}>Decrement </Button>
    
         </Container>
